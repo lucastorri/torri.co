@@ -1,16 +1,25 @@
-<% require 'babosa' %>
 <%
-  request.env["PATH_INFO"] =~ /([^\/]+)\.[\.\w]+$/
-  current_page = $1 || data.pages.first
-  title = data.pages.find do |p|
-    p = p.keys.first if p.is_a? Hash
-    p.to_s.to_slug.approximate_ascii.normalize.to_s == current_page
+  require 'babosa'
+  def slug str
+    str.to_s.to_slug.approximate_ascii.normalize.to_s
   end
+  request.env["PATH_INFO"] =~ /([^\/|^\.]+)[\/]{0,1}([^\.]+){0,1}/
+  current_page = $1 || data.pages.first
+  current_subpage = $2
+  subtitle = nil
+  title = data.pages.find do |p|
+    if p.is_a? Hash
+      subtitle = p.values.first.find { |sp| slug(sp) == current_subpage }
+      p = p.keys.first
+    end
+    slug(p) == current_page
+  end
+  title = title.keys.first if title.is_a? Hash
 %>
 
 <!DOCTYPE html>
 <head>
-  <title>Lucas Torri - <%= title %></title>
+  <title>Lucas Torri - <%= title %><%= " - #{subtitle}" if subtitle %></title>
   <meta name="author" content="Lucas Torri">
 
   <%= stylesheet_link_tag 'bootstrap.css' %>
@@ -28,20 +37,20 @@
           <%
             data.pages.each do |page| 
               dropdown = page.is_a? Hash
-              page_slug = (dropdown ? page.keys.first : page).to_s.to_slug.approximate_ascii.normalize.to_s
-              active = page == title
+              page_slug = slug(dropdown ? page.keys.first : page)
+              active = (dropdown ? page.keys.first : page) == title
           %>
             <li class="<%= "active " if active %><%= "dropdown " if dropdown %>">
               <% if dropdown%>
-                <a class="dropdown-toggle" data-toggle="dropdown"><%= page.keys.first %> <b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown"><%= page.keys.first %><b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <% page.values.first.each do |subpage| %>
-                    <% subpage_slug = subpage.to_s.to_slug.approximate_ascii.normalize.to_s %>
-                    <li><%= link_to subpage, "#{page_slug}/#{subpage_slug}" %></li>
+                    <% subpage_slug = slug(subpage) %>
+                    <li><%= link_to subpage, "/#{page_slug}/#{subpage_slug}" %></li>
                   <% end %>
                 </div>
               <% else %>
-                <%= link_to page, page_slug %>
+                <%= link_to page, "/#{page_slug}" %>
               <% end %>
             </li>
           <% end %>
