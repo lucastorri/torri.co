@@ -4,23 +4,13 @@
   current_page = $1 || data.pages.first
   title = data.pages.find { |p| p.to_s.to_slug.approximate_ascii.normalize.to_s == current_page }
 %>
-<!doctype html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<!DOCTYPE html>
 <head>
-  <meta charset="utf-8">
-
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
   <title>Lucas Torri - <%= current_page %></title>
-  <meta name="description" content="">
   <meta name="author" content="Lucas Torri">
 
-  <%= stylesheet_link_tag 'bootstrap2.css' %>
+  <%= stylesheet_link_tag 'bootstrap.css' %>
   
 </head>
 
@@ -59,14 +49,6 @@
       load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
     });
   </script>
-
-
-  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-       chromium.org/developers/how-tos/chrome-frame-getting-started -->
-  <!--[if lt IE 7 ]>
-    <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-  <![endif]-->
 
 </body>
 </html>
