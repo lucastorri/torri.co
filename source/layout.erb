@@ -2,7 +2,10 @@
 <%
   request.env["PATH_INFO"] =~ /([^\/]+)\.[\.\w]+$/
   current_page = $1 || data.pages.first
-  title = data.pages.find { |p| p.to_s.to_slug.approximate_ascii.normalize.to_s == current_page }
+  title = data.pages.find do |p|
+    p = p.keys.first if p.is_a? Hash
+    p.to_s.to_slug.approximate_ascii.normalize.to_s == current_page
+  end
 %>
 
 <!DOCTYPE html>
@@ -24,9 +27,23 @@
         <ul class="nav">
           <%
             data.pages.each do |page| 
-            page_slug = page.to_s.to_slug.approximate_ascii.normalize.to_s
+              dropdown = page.is_a? Hash
+              page_slug = (dropdown ? page.keys.first : page).to_s.to_slug.approximate_ascii.normalize.to_s
+              active = page == title
           %>
-            <li class="<%= page_slug %><%= " active" if page == title %>"><%= link_to page, page_slug %></li>
+            <li class="<%= "active " if active %><%= "dropdown " if dropdown %>">
+              <% if dropdown%>
+                <a class="dropdown-toggle" data-toggle="dropdown"><%= page.keys.first %> <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <% page.values.first.each do |subpage| %>
+                    <% subpage_slug = subpage.to_s.to_slug.approximate_ascii.normalize.to_s %>
+                    <li><%= link_to subpage, "#{page_slug}/#{subpage_slug}" %></li>
+                  <% end %>
+                </div>
+              <% else %>
+                <%= link_to page, page_slug %>
+              <% end %>
+            </li>
           <% end %>
         </ul>
       </div>
@@ -42,7 +59,7 @@
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script>window.jQuery || document.write(<%= "'#{js_escape_html(javascript_include_tag('libs/jquery-1.7.2.min.js'))}'" %>)</script>
-
+  <%= javascript_include_tag 'libs/bootstrap-dropdown.js' %>
 
   <!-- Change UA-XXXXX-X to be your site's ID -->
   <script>
