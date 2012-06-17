@@ -7,16 +7,17 @@
 
 <!DOCTYPE html>
 <head>
-  <title>Lucas Torri - <%= current_page %></title>
+  <title>Lucas Torri - <%= title %></title>
   <meta name="author" content="Lucas Torri">
 
   <%= stylesheet_link_tag 'bootstrap.css' %>
+  <%= stylesheet_link_tag 'site.css' %>
   
 </head>
 
 <body>
 
-  <div class="navbar">
+  <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
         <a class="brand" href="/">Lucas Torri</a>
@@ -32,7 +33,7 @@
     </div>
   </div>
     
-  <div class="container">
+  <div class="container contents">
     <%= yield %>
   </div>
 
