@@ -3,15 +3,13 @@
   <%= javascript_include_tag 'libs/jquery.galleriffic.js' %>
   <%= javascript_include_tag 'libs/jquery.opacityrollover.js' %>
   <script type="text/javascript">
-    /*
-    var onMouseOutOpacity = 0.67;
+    var onMouseOutOpacity = 0.57;
 		$('#thumbs ul.thumbs li, div.navigation a.pageLink').opacityrollover({
 			mouseOutOpacity:   onMouseOutOpacity,
 			mouseOverOpacity:  1.0,
 			fadeSpeed:         'fast',
 			exemptionSelector: '.selected'
 		});
-    */
   
     var gallery = $('#thumbs').galleriffic({
       delay:                     3000, // in milliseconds
@@ -36,14 +34,33 @@
       enableKeyboardNavigation:  true, // Specifies whether keyboard navigation is enabled
       autoStart:                 false, // Specifies whether the slideshow should be playing or paused when the page first loads
       syncTransitions:           false, // Specifies whether the out and in transitions occur simultaneously or distinctly
-      defaultTransitionDuration: 1000, // If using the default transitions, specifies the duration of the transitions
-      onSlideChange:             undefined, // accepts a delegate like such: function(prevIndex, nextIndex) { ... }
-      onTransitionOut:           undefined, // accepts a delegate like such: function(slide, caption, isSync, callback) { ... }
-      onTransitionIn:            undefined, // accepts a delegate like such: function(slide, caption, isSync) { ... }
+      defaultTransitionDuration: 500, // If using the default transitions, specifies the duration of the transitions
       onPageTransitionOut:       undefined, // accepts a delegate like such: function(callback) { ... }
       onPageTransitionIn:        undefined, // accepts a delegate like such: function() { ... }
       onImageAdded:              undefined, // accepts a delegate like such: function(imageData, $li) { ... }
-      onImageRemoved:            undefined  // accepts a delegate like such: function(imageData, $li) { ... }
+      onImageRemoved:            undefined,  // accepts a delegate like such: function(imageData, $li) { ... }
+      onSlideChange:             function(prevIndex, nextIndex) {
+				this.find('ul.thumbs').children()
+					.eq(prevIndex).fadeTo('fast', onMouseOutOpacity).end()
+					.eq(nextIndex).fadeTo('fast', 1.0);
+				this.$captionContainer.find('div.photo-index')
+					.html('Photo '+ (nextIndex+1) +' of '+ this.data.length);
+			},
+			onPageTransitionOut:       function(callback) {
+				this.fadeTo('fast', 0.0, callback);
+			},
+			onPageTransitionIn:        function() {
+				var prevPageLink = this.find('a.prev').css('visibility', 'hidden');
+				var nextPageLink = this.find('a.next').css('visibility', 'hidden');
+				if (this.displayedPage > 0)
+					prevPageLink.css('visibility', 'visible');
+
+				var lastPage = this.getNumPages() - 1;
+				if (this.displayedPage < lastPage)
+					nextPageLink.css('visibility', 'visible');
+
+				this.fadeTo('fast', 1.0);
+			}
     });
     
     $.historyInit(function(hash) {
@@ -73,7 +90,6 @@
 <div id="caption"></div>
 
 <div id="thumbs">
-  <a class="pageLink prev" style="visibility: hidden;" href="#" title="Previous Page"></a>
   <ul class="thumbs noscript">
     <li>
       <a class="thumb" name="1" href="images/album1/2.jpg" title="your image title">
@@ -118,5 +134,4 @@
       <div class="caption">figura 2</div>
     </li>
   </ul>
-  <a class="pageLink next" style="visibility: hidden;" href="#" title="Next Page"></a>
 </div>
