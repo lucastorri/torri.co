@@ -3,13 +3,15 @@
   <%= javascript_include_tag 'libs/jquery.galleriffic.js' %>
   <%= javascript_include_tag 'libs/jquery.opacityrollover.js' %>
   <script type="text/javascript">
+    /*
     var onMouseOutOpacity = 0.67;
-  		$('#thumbs ul.thumbs li, div.navigation a.pageLink').opacityrollover({
-  			mouseOutOpacity:   onMouseOutOpacity,
-  			mouseOverOpacity:  1.0,
-  			fadeSpeed:         'fast',
-  			exemptionSelector: '.selected'
-  		});
+		$('#thumbs ul.thumbs li, div.navigation a.pageLink').opacityrollover({
+			mouseOutOpacity:   onMouseOutOpacity,
+			mouseOverOpacity:  1.0,
+			fadeSpeed:         'fast',
+			exemptionSelector: '.selected'
+		});
+    */
   
     var gallery = $('#thumbs').galleriffic({
       delay:                     3000, // in milliseconds
@@ -28,8 +30,8 @@
 			pauseLinkText:             'Pause Slideshow',
 			prevLinkText:              '&lsaquo; Previous Photo',
 			nextLinkText:              'Next Photo &rsaquo;',
-			nextPageLinkText:          'Next &rsaquo;',
-			prevPageLinkText:          '&lsaquo; Prev',
+			nextPageLinkText:          '»',
+			prevPageLinkText:          '«',
       enableHistory:             true, // Specifies whether the url's hash and the browser's history cache should update when the current slideshow image changes
       enableKeyboardNavigation:  true, // Specifies whether keyboard navigation is enabled
       autoStart:                 false, // Specifies whether the slideshow should be playing or paused when the page first loads
@@ -50,6 +52,15 @@
 			} else {
 				$.galleriffic.gotoImage(hash);
 			}
+		});
+    
+    $("a[rel='history']").live('click', function(e) {
+			if (e.button != 0) return true;
+
+			var hash = this.href;
+			hash = hash.replace(/^.*#/, '');
+			$.historyLoad(hash);
+			return false;
 		});
     
   </script>
