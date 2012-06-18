@@ -802,7 +802,7 @@
 				// Prev Page Link
 				if (page > 0) {
 					var prevPage = startIndex - this.numThumbs;
-					pager.append('<a rel="history" href="#'+this.data[prevPage].hash+'" title="'+this.prevPageLinkText+'">'+this.prevPageLinkText+'</a>');
+					pager.append('<li><a rel="history" href="#'+this.data[prevPage].hash+'" title="'+this.prevPageLinkText+'">'+this.prevPageLinkText+'</a></li>');
 				}
 
 				// Create First Page link if needed
@@ -833,7 +833,7 @@
 				// Next Page Link
 				var nextPage = startIndex + this.numThumbs;
 				if (nextPage < this.data.length) {
-					pager.append('<a rel="history" href="#'+this.data[nextPage].hash+'" title="'+this.nextPageLinkText+'">'+this.nextPageLinkText+'</a>');
+					pager.append('<li><a rel="history" href="#'+this.data[nextPage].hash+'" title="'+this.nextPageLinkText+'">'+this.nextPageLinkText+'</a></li>');
 				}
 
 				pager.find('a').click(function(e) {
@@ -851,10 +851,10 @@
 				var pageLabel = pageNum + 1;
 				var currentPage = this.getCurrentPage();
 				if (pageNum == currentPage)
-					pager.append('<span class="current">'+pageLabel+'</span>');
+					pager.append('<li class="disabled"><a rel="history" href="#">'+pageLabel+'</a></li>');
 				else if (pageNum < numPages) {
 					var imageIndex = pageNum*this.numThumbs;
-					pager.append('<a rel="history" href="#'+this.data[imageIndex].hash+'" title="'+pageLabel+'">'+pageLabel+'</a>');
+					pager.append('<li><a rel="history" href="#'+this.data[imageIndex].hash+'" title="'+pageLabel+'">'+pageLabel+'</a></li>');
 				}
 				
 				return this;
