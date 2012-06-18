@@ -13,3 +13,77 @@ html {
 body {
   height: 100%;
 }
+.album img {
+  border: 5px solid #fff;
+  box-shadow: 1px 1px 10px #000;
+}
+.album {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.photo-index {
+  position: absolute;
+  top: 175px;
+  left: 238px;
+}
+#controls {
+  position: absolute;
+  top: 175px;
+  left: 635px;
+}
+
+
+.thumbs {
+  position: absolute;
+  top: 60px;
+  left: 205px;
+}
+
+ul.thumbs li {
+	float: left;
+	margin: 2px;
+	list-style: none;
+}
+.nav-controls a {
+  padding: 0px 5px;
+}
+
+div.ss-controls {
+	float: right;
+}
+div.nav-controls {
+	float: right;
+}
+
+div.loader,
+div.slideshow a.advance-link,
+div.caption-container {
+  width: 510px; /* This should be set to be at least the width of the largest image in the slideshow with padding */
+	height: 502px; /* This should be set to be at least the height of the largest image in the slideshow with padding */	
+}
+div.slideshow span.image-wrapper {
+  display: block;
+  position: absolute;
+}
+div.slideshow a.advance-link {
+	display: block;
+	line-height: 25px; /* This should be set to be at least the height of the largest image in the slideshow with padding */
+}
+div.slideshow {
+  position: absolute;
+  top: 200px;
+  left: 360px;
+}
+div.slideshow img {
+	border-width: 8px;
+}
+.caption {
+  position: relative;
+  top: -110px;
+  left: -220px;
+}
+
+.image-caption .caption {
+  display: none;
+}
