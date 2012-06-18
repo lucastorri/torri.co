@@ -3,6 +3,14 @@
   <%= javascript_include_tag 'libs/jquery.galleriffic.js' %>
   <%= javascript_include_tag 'libs/jquery.opacityrollover.js' %>
   <script type="text/javascript">
+    var onMouseOutOpacity = 0.67;
+  		$('#thumbs ul.thumbs li, div.navigation a.pageLink').opacityrollover({
+  			mouseOutOpacity:   onMouseOutOpacity,
+  			mouseOverOpacity:  1.0,
+  			fadeSpeed:         'fast',
+  			exemptionSelector: '.selected'
+  		});
+  
     var gallery = $('#thumbs').galleriffic({
       delay:                     3000, // in milliseconds
       numThumbs:                 5, // The number of thumbnails to show page
@@ -35,6 +43,15 @@
       onImageAdded:              undefined, // accepts a delegate like such: function(imageData, $li) { ... }
       onImageRemoved:            undefined  // accepts a delegate like such: function(imageData, $li) { ... }
     });
+    
+    $.historyInit(function(hash) {
+			if(hash == "") {
+				gallery.gotoIndex(0);
+			} else {
+				$.galleriffic.gotoImage(hash);
+			}
+		});
+    
   </script>
 <% end %>
 
