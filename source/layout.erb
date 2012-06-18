@@ -47,7 +47,11 @@
                 <ul class="dropdown-menu">
                   <% page.values.first.each do |subpage| %>
                     <% subpage_slug = slug(subpage) %>
-                    <li class="<%= "active" if current_subpage == subpage_slug %>"><%= link_to subpage, "/#{page_slug}/#{subpage_slug}" %></li>
+                    <% if subpage == '--' %>
+                      <li class="divider"></li>
+                    <% else %>
+                      <li class="<%= "active" if current_subpage == subpage_slug %>"><%= link_to subpage, "/#{page_slug}/#{subpage_slug}" %></li>
+                    <% end %>
                   <% end %>
                 </div>
               <% else %>
