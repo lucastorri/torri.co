@@ -1,0 +1,28 @@
+<% current_page, current_subpage, title, subtitle = current_info request %>
+
+<% content_for :js do %>
+  <%= javascript_include_tag 'libs/jquery.history.js' %>
+  <%= javascript_include_tag 'libs/jquery.galleriffic.js' %>
+  <%= javascript_include_tag 'libs/jquery.opacityrollover.js' %>
+  <%= javascript_include_tag 'album.js' %>
+<% end %>
+
+<h1><%= subtitle %></h1>
+
+<div id="controls"></div>
+<div id="loading"></div>
+<div id="slideshow"></div>
+<div id="caption"></div>
+
+<div id="thumbs">
+  <ul class="thumbs noscript">
+    <% pics.each do |pic| %>
+      <li>
+        <a class="thumb" name="1" href="<%= pic[:thumb] %>" title="<%= pic[:caption] %>">
+          <img src="<%= pic[:image] %>" alt="<%= pic[:caption] %>" />
+        </a>
+        <div class="caption"><%= pic[:caption] %></div>
+      </li>
+    <% end %>
+  </ul>
+</div>

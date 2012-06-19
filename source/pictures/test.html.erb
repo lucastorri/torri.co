@@ -1,101 +1,14 @@
-<% content_for :js do %>
-  <%= javascript_include_tag 'libs/jquery.history.js' %>
-  <%= javascript_include_tag 'libs/jquery.galleriffic.js' %>
-  <%= javascript_include_tag 'libs/jquery.opacityrollover.js' %>
-  <%= javascript_include_tag 'album.js' %>
-<% end %>
-
-
-<div id="controls"></div>
-<div id="loading"></div>
-<div id="slideshow"></div>
-<div id="caption"></div>
-
-<div id="thumbs">
-  <ul class="thumbs noscript">
-    <li>
-      <a class="thumb" name="1" href="/images/album1/2.jpg" title="your image title">
-        <img src="/images/album1/thumbs/2.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 1</div>
-    </li>
-    <li>
-      <a class="thumb" name="2" href="/images/album1/3.jpg" title="your image title">
-        <img src="/images/album1/thumbs/3.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 2</div>
-    </li>
-    <li>
-      <a class="thumb" name="1" href="/images/album1/2.jpg" title="your image title">
-        <img src="/images/album1/thumbs/2.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 1</div>
-    </li>
-    <li>
-      <a class="thumb" name="2" href="/images/album1/3.jpg" title="your image title">
-        <img src="/images/album1/thumbs/3.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 2</div>
-    </li>
-    <li>
-      <a class="thumb" name="1" href="/images/album1/2.jpg" title="your image title">
-        <img src="/images/album1/thumbs/2.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 1</div>
-    </li>
-    <li>
-      <a class="thumb" name="2" href="/images/album1/3.jpg" title="your image title">
-        <img src="/images/album1/thumbs/3.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 2</div>
-    </li>
-    <li>
-      <a class="thumb" name="2" href="/images/album1/5.jpg" title="your image title">
-        <img src="/images/album1/thumbs/5.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 2</div>
-    </li>
-    <li>
-      <a class="thumb" name="1" href="/images/album1/2.jpg" title="your image title">
-        <img src="/images/album1/thumbs/2.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 1</div>
-    </li>
-    <li>
-      <a class="thumb" name="2" href="/images/album1/3.jpg" title="your image title">
-        <img src="/images/album1/thumbs/3.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 2</div>
-    </li>
-    <li>
-      <a class="thumb" name="1" href="/images/album1/2.jpg" title="your image title">
-        <img src="/images/album1/thumbs/2.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 1</div>
-    </li>
-    <li>
-      <a class="thumb" name="2" href="/images/album1/3.jpg" title="your image title">
-        <img src="/images/album1/thumbs/3.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 2</div>
-    </li>
-    <li>
-      <a class="thumb" name="1" href="/images/album1/2.jpg" title="your image title">
-        <img src="/images/album1/thumbs/2.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 1</div>
-    </li>
-    <li>
-      <a class="thumb" name="2" href="/images/album1/3.jpg" title="your image title">
-        <img src="/images/album1/thumbs/3.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 2</div>
-    </li>
-    <li>
-      <a class="thumb" name="2" href="/images/album1/5.jpg" title="your image title">
-        <img src="/images/album1/thumbs/5.jpg" alt="your image title again for graceful degradation" />
-      </a>
-      <div class="caption">figura 2</div>
-    </li>
-  </ul>
-</div>
+<%= 
+  partial 'pictures/album', :locals => {
+    :pics => [
+      { :thumb => "/images/album1/2.jpg", :image => "/images/album1/thumbs/2.jpg", :caption => "your image title again for graceful degradation" },
+      { :thumb => "/images/album1/3.jpg", :image => "/images/album1/thumbs/3.jpg", :caption => "your image title again for graceful degradation" },
+      { :thumb => "/images/album1/3.jpg", :image => "/images/album1/thumbs/3.jpg", :caption => "your image title again for graceful degradation" },
+      { :thumb => "/images/album1/2.jpg", :image => "/images/album1/thumbs/2.jpg", :caption => "your image title again for graceful degradation" },
+      { :thumb => "/images/album1/2.jpg", :image => "/images/album1/thumbs/2.jpg", :caption => "your image title again for graceful degradation" },
+      { :thumb => "/images/album1/3.jpg", :image => "/images/album1/thumbs/3.jpg", :caption => "your image title again for graceful degradation" },
+      { :thumb => "/images/album1/3.jpg", :image => "/images/album1/thumbs/3.jpg", :caption => "your image title again for graceful degradation" },
+      { :thumb => "/images/album1/3.jpg", :image => "/images/album1/thumbs/3.jpg", :caption => "your image title again for graceful degradation" }
+    ]
+  }
+%>

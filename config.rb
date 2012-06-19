@@ -53,11 +53,42 @@
 ###
 
 # Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
+helpers do
+  require 'babosa'
+  def slug str
+    str.to_s.to_slug.approximate_ascii.normalize.to_s
+  end
+  
+  def current_pages request
+    request.env["PATH_INFO"] =~ /([^\/|^\.]+)[\/]{0,1}([^\.]+){0,1}/
+    current_page = $1 || data.pages.first
+    current_subpage = $2
+    [current_page, current_subpage]
+  end
+  
+  def titles_for current_page, current_subpage
+    subtitle = nil
+    title = data.pages.find do |p|
+      if p.is_a? Hash
+        subtitle = p.values.first.find { |sp| slug(sp) == current_subpage }
+        p = p.keys.first
+      end
+      slug(p) == current_page
+    end
+    title = title.keys.first if title.is_a? Hash
+    if data.to_h.has_key? current_page
+      subtitle = data.try(current_page).find { |sp| slug(sp) == current_subpage }
+    end
+    [title, subtitle]
+  end
+  
+  def current_info request
+    current_page, current_subpage = current_pages request
+    title, subtitle = titles_for current_page, current_subpage
+    [current_page, current_subpage, title, subtitle]
+  end
+  
+end
 
 # Change the CSS directory
 # set :css_dir, "alternative_css_directory"
