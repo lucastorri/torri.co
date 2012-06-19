@@ -740,7 +740,7 @@
 				if (this.enableBottomPager) {
 					var $bottomPager = this.find('div.bottom');
 					if ($bottomPager.length == 0)
-						$bottomPager = this.append('<div class="bottom pagination"></div>').find('div.bottom');
+						$bottomPager = this.append('<div class="bottom pagination row span12"></div>').find('div.bottom');
 					else
 						$bottomPager.empty();
 
