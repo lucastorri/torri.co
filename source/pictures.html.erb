@@ -1,14 +1,12 @@
-<ul class="albums">
+<div class="row">
   <% data.pictures.each do |p| %>
-    <li>
-      <% (3.downto(1)).each do |i| %>
-        <div id="thumbs" class="albumpre">
-          <a class="thumb" href="<%= "/pictures/#{slug(p)}" %>" title="<%= p %>" >
-            <img class="<%= "thumb#{i}" %>" src="<%= "/images/pictures/#{slug(p)}/thumbs/#{i}.jpg" %>" alt="<%= p %>" />
-          </a>
-        </div>
-      <% end %>
-    </li>
+    <a href="<%= "/pictures/#{slug(p)}" %>" title="<%= p %>" >
+      <div id="thumbs" class="span4 albumpre">
+        <% (3.downto(1)).each do |i| %>
+          <img class="<%= "thumb#{i}" %>" src="<%= "/images/pictures/#{slug(p)}/thumbs/#{i}.jpg" %>" alt="<%= p %>" />
+        <% end %>
+      </div>
+    </a>
   <% end %>
-</ul>
+</div>
 
