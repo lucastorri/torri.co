@@ -15,6 +15,9 @@
     slug(p) == current_page
   end
   title = title.keys.first if title.is_a? Hash
+  if data.to_h.has_key? current_page
+    subtitle = data.try(current_page).find { |sp| slug(sp) == current_subpage }
+  end
 %>
 
 <!DOCTYPE html>
