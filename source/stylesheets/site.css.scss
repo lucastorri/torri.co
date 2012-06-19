@@ -14,6 +14,35 @@ body {
   height: 100%;
 }
 
+.albumpre {
+  float: left;
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.albumpre img {
+  position: absolute;
+}
+
+.albums li {
+  list-style: none;
+}
+
+.thumb1 {
+  -webkit-transform: rotate(8deg);
+  -moz-transform: rotate(8deg);
+}
+.thumb2 {
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+}
+.thumb3 {
+  -webkit-transform: rotate(20deg);
+  -moz-transform: rotate(20deg);
+}
+
+
 .album {
   text-align: center;
   vertical-align: middle;

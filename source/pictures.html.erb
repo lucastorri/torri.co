@@ -1,11 +1,12 @@
-
 <ul class="albums">
   <% data.pictures.each do |p| %>
     <li>
-      <% (1..3).each do |i| %>
-        <a class="thumb" href="/pictures/<%= to_slug(p) %>" title="<%= p =>">
-          <img src="<%= "/images/pictures/#{to_slug(p)}/#{i}.jpg" %>" alt="<%= p %>" />
-        </a>
+      <% (3.downto(1)).each do |i| %>
+        <div id="thumbs" class="albumpre">
+          <a class="thumb" href="<%= "/pictures/#{slug(p)}" %>" title="<%= p %>" >
+            <img class="<%= "thumb#{i}" %>" src="<%= "/images/pictures/#{slug(p)}/thumbs/#{i}.jpg" %>" alt="<%= p %>" />
+          </a>
+        </div>
       <% end %>
     </li>
   <% end %>
