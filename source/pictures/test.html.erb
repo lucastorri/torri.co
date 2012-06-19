@@ -1,14 +1,15 @@
 <%= 
   partial 'pictures/album', :locals => {
+    :album => 'test',
     :pics => [
-      { :thumb => "/images/album1/2.jpg", :image => "/images/album1/thumbs/2.jpg", :caption => "your image title again for graceful degradation" },
-      { :thumb => "/images/album1/3.jpg", :image => "/images/album1/thumbs/3.jpg", :caption => "your image title again for graceful degradation" },
-      { :thumb => "/images/album1/3.jpg", :image => "/images/album1/thumbs/3.jpg", :caption => "your image title again for graceful degradation" },
-      { :thumb => "/images/album1/2.jpg", :image => "/images/album1/thumbs/2.jpg", :caption => "your image title again for graceful degradation" },
-      { :thumb => "/images/album1/2.jpg", :image => "/images/album1/thumbs/2.jpg", :caption => "your image title again for graceful degradation" },
-      { :thumb => "/images/album1/3.jpg", :image => "/images/album1/thumbs/3.jpg", :caption => "your image title again for graceful degradation" },
-      { :thumb => "/images/album1/3.jpg", :image => "/images/album1/thumbs/3.jpg", :caption => "your image title again for graceful degradation" },
-      { :thumb => "/images/album1/3.jpg", :image => "/images/album1/thumbs/3.jpg", :caption => "your image title again for graceful degradation" }
+      [ "2.jpg", "your image title again for graceful degradation" ],
+      [ "3.jpg", "your image title again for graceful degradation" ],
+      [ "3.jpg", "your image title again for graceful degradation" ],
+      [ "2.jpg", "your image title again for graceful degradation" ],
+      [ "2.jpg", "your image title again for graceful degradation" ],
+      [ "3.jpg", "your image title again for graceful degradation" ],
+      [ "3.jpg", "your image title again for graceful degradation" ],
+      [ "3.jpg", "your image title again for graceful degradation" ]
     ]
   }
 %>

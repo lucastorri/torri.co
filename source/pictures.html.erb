@@ -1,4 +1,13 @@
 
-<% data.pictures.each do |p| %>
+<ul class="albums">
+  <% data.pictures.each do |p| %>
+    <li>
+      <% (1..3).each do |i| %>
+        <a class="thumb" href="/pictures/<%= to_slug(p) %>" title="<%= p =>">
+          <img src="<%= "/images/pictures/#{to_slug(p)}/#{i}.jpg" %>" alt="<%= p %>" />
+        </a>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
 
-<% end %>

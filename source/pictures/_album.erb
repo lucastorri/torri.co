@@ -16,12 +16,13 @@
 
 <div id="thumbs">
   <ul class="thumbs noscript">
-    <% pics.each do |pic| %>
+    <% basepath = "/images/pictures/#{album}" %>
+    <% pics.each do |pic, caption| %>
       <li>
-        <a class="thumb" name="1" href="<%= pic[:thumb] %>" title="<%= pic[:caption] %>">
-          <img src="<%= pic[:image] %>" alt="<%= pic[:caption] %>" />
+        <a class="thumb" name="1" href="<%= "#{basepath}/#{pic}" %>" title="<%= caption %>">
+          <img src="<%= "#{basepath}/thumbs/#{pic}" %>" alt="<%= caption %>" />
         </a>
-        <div class="caption"><%= pic[:caption] %></div>
+        <div class="caption"><%= caption %></div>
       </li>
     <% end %>
   </ul>
