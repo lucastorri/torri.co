@@ -12,7 +12,7 @@ var gallery = $('#thumbs').galleriffic({
   preloadAhead:              6, // Set to -1 to preload all images
   enableTopPager:            false,
   enableBottomPager:         true,
-  maxPagesToShow:            7,  // The maximum number of pages to display in either the top or bottom pager
+  maxPagesToShow:            20,  // The maximum number of pages to display in either the top or bottom pager
   imageContainerSel:         '#slideshow', // The CSS selector for the element within which the main slideshow image should be rendered
   controlsContainerSel:      '#controls', // The CSS selector for the element within which the slideshow controls should be rendered
   captionContainerSel:       '#caption', // The CSS selector for the element within which the captions should be rendered

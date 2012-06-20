@@ -33,17 +33,20 @@ body {
 .thumb1 {
   -webkit-transform: rotate(8deg);
   -moz-transform: rotate(8deg);
-  top: -50px;
+  top: -120px;
 }
 .thumb2 {
   -webkit-transform: rotate(-10deg);
   -moz-transform: rotate(-10deg);
-  right: 30px;
+  top: -60px;
+  right: -50px;
+  
 }
 .thumb3 {
   -webkit-transform: rotate(20deg);
   -moz-transform: rotate(20deg);
-  left: 30px;
+  top: 30px;
+  left: -40px;
 }
 
 
