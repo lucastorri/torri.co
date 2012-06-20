@@ -5,6 +5,28 @@ $('#thumbs ul.thumbs li, div.navigation a.pageLink').opacityrollover({
 	fadeSpeed:         'fast',
 	exemptionSelector: '.selected'
 });
+
+var s = new Sonic({
+	width: 30,
+	height: 30,
+	stepsPerFrame: 2,
+	trailLength: .3,
+	pointDistance: .1,
+	padding: 10,
+	fillColor: '#369BD7',
+	strokeColor: '#FFF',
+	setup: function() {
+		this._.lineWidth = 20;
+	},
+	path: [
+		['line', 0, 0, 30, 0],
+		['line', 30, 0, 30, 30],
+		['line', 30, 30, 0, 30],
+		['line', 0, 30, 0, 0]
+	]
+});
+$("#loading").append(s.canvas);
+s.play();
   
 var gallery = $('#thumbs').galleriffic({
   delay:                     3000, // in milliseconds
