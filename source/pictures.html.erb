@@ -1,7 +1,7 @@
 <div class="row">
   <% data.pictures.each do |p| %>
     <a href="<%= "/pictures/#{slug(p)}" %>" title="<%= p %>" >
-      <div id="thumbs" class="span4 albumpre row">
+      <div class="span4 albumpre">
         <div class="albumpre-caption"><h2><%= p %></h2></div>
         <% (3.downto(1)).each do |i| %>
           <img class="<%= "thumb#{i}" %>" src="<%= "/images/pictures/#{slug(p)}/thumbs/#{i}.jpg" %>" alt="<%= p %>" />

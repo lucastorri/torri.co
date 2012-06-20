@@ -15,17 +15,16 @@ body {
 
 .albumpre {
   text-align: center;
+  height: 300px;
 }
-
 .albumpre img {
   position: relative;
+  border: 5px solid #fff;
+  box-shadow: 1px 1px 10px #000;
 }
-
 .albums li {
   list-style: none;
 }
-
-
 .albumpre-caption {
   top: 30px;
 }
