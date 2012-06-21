@@ -6,6 +6,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.8)
     babosa (0.3.7)
+    bluecloth (2.2.0)
     chunky_png (1.2.5)
     coffee-script (2.2.0)
       coffee-script-source
@@ -105,4 +106,5 @@ PLATFORMS
 
 DEPENDENCIES
   babosa
+  bluecloth
   middleman (~> 2.0.15.3)

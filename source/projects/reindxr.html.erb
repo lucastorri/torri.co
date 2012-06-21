@@ -1,0 +1,11 @@
+
+<%=
+  require 'bluecloth'
+  
+  project = 'reindxr'
+  baseuri = "github.com/lucastorri/#{project}"
+  uri = "https://raw.#{baseuri}/master/README.markdown"
+  mkd = URI.parse(URI.encode(uri)).read
+
+  BlueCloth.new(mkd).to_html
+%>

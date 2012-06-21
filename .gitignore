@@ -2,3 +2,4 @@ Gemfile.lock
 .sass-cache
 *.DS_Store
 build
+source/images/pictures
