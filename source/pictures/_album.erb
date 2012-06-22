@@ -5,7 +5,6 @@
   <%= javascript_include_tag 'libs/jquery.galleriffic.js' %>
   <%= javascript_include_tag 'libs/jquery.opacityrollover.js' %>
   <%= javascript_include_tag 'libs/sonic.js' %>
-  <%= javascript_include_tag 'album.js' %>
   <script>
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -15,6 +14,14 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
   </script>
+  <% if defined? picsLocation %>
+  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=true' %>
+  <%= javascript_include_tag 'libs/gmaps.js' %>
+  <script type="text/javascript">
+  var picsLocation = <%= "\"#{picsLocation}\"" %>;
+  </script>
+  <% end %>
+  <%= javascript_include_tag 'album.js' %>
 <% end %>
 
 <h1><%= subtitle %></h1>
@@ -40,9 +47,12 @@
   </ul>
 </div>
 
-<% fbhref = "http://torri.co/#{current_page}/#{current_subpage}" %>
-<div class="fbcomments">
-  <div id="fb-root"></div>
-  <div class="fb-like" data-href="<%= fbhref %>" data-send="true" data-width="560" data-show-faces="true" data-font="arial"></div>
-  <div class="fb-comments" data-href="<%= fbhref %>" data-num-posts="5" data-width="560"></div>
+<div id="picsextra" class="row">
+  <% fbhref = "http://torri.co/#{current_page}/#{current_subpage}" %>
+  <div id="fbcomments" class="span7">
+    <div id="fb-root"></div>
+    <div class="fb-like" data-href="<%= fbhref %>" data-send="true" data-width="540" data-show-faces="true" data-font="arial"></div>
+    <div class="fb-comments" data-href="<%= fbhref %>" data-num-posts="2" data-width="540"></div>
+  </div>
+  <div id="picsmap" class="span5"></div>
 </div>

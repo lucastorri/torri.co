@@ -114,6 +114,13 @@ ul.thumbs img {
   float: right;
 }
 
-.fbcomments {
+#fbcomments {
   text-align: center;
+}
+
+#picsmap {
+  min-height: 300px;
+}
+#picsmap img {
+  max-width: none;
 }
