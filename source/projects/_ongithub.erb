@@ -1,0 +1,17 @@
+<% current_page, current_subpage, title, subtitle = current_info request %>
+
+<%
+  baseuri = "github.com/lucastorri/#{project}"
+  raw = "https://raw.#{baseuri}/master/README.markdown"
+  link = "http://#{baseuri}"
+%>
+
+<h1><%= subtitle %></h1>
+
+<p><a href="<%= link %>">Project hosted on GitHub</a></p>
+
+<%=
+  require 'bluecloth'
+  mkd = URI.parse(URI.encode(raw)).read
+  BlueCloth.new(mkd).to_html
+%>
