@@ -45,8 +45,8 @@ var gallery = $('#thumbs').galleriffic({
 	pauseLinkText:             'Pause Slideshow',
 	prevLinkText:              '&lsaquo; Previous Photo',
 	nextLinkText:              'Next Photo &rsaquo;',
-	nextPageLinkText:          '»',
-	prevPageLinkText:          '«',
+	nextPageLinkText:          '>',
+	prevPageLinkText:          '<',
   enableHistory:             true, // Specifies whether the url's hash and the browser's history cache should update when the current slideshow image changes
   enableKeyboardNavigation:  true, // Specifies whether keyboard navigation is enabled
   autoStart:                 false, // Specifies whether the slideshow should be playing or paused when the page first loads
