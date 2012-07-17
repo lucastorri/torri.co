@@ -1,6 +1,6 @@
 (function() {
 
-  var onMouseOutOpacity = 0.57;
+  var onMouseOutOpacity = 0.7;
   $('#thumbs ul.thumbs li, div.navigation a.pageLink').opacityrollover({
   	mouseOutOpacity:   onMouseOutOpacity,
   	mouseOverOpacity:  1.0,
